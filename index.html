@@ -2,26 +2,641 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Darija Tafraout Bot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darija Tafraout Bot 🏔️ — Famille Ait Brahim</title>
 <style>
-  body { font-family: Arial; background: #1A0F00; 
-         color: #F5EDD8; text-align: center; padding: 40px; }
-  h1 { color: #C4853A; font-size: 36px; }
-  p { font-size: 16px; line-height: 1.6; max-width: 600px; margin: 0 auto; }
-  .links { margin-top: 30px; }
-  a { color: #C4853A; margin: 0 15px; font-size: 14px; }
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Noto+Naskh+Arabic:wght@400;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ochre:#C4853A;
+  --deep:#1A0F00;
+  --sand:#F5EDD8;
+  --rust:#8B3A2A;
+  --teal:#2A6B6B;
+  --cream:#FBF6EC;
+  --muted:#8A7560;
+}
+
+body{
+  font-family:'Syne',sans-serif;
+  background:var(--deep);
+  color:var(--sand);
+  overflow-x:hidden;
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(196,133,58,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(42,107,107,0.06) 0%, transparent 50%),
+    repeating-linear-gradient(60deg, transparent, transparent 40px, rgba(196,133,58,0.02) 40px, rgba(196,133,58,0.02) 41px);
+}
+
+.hero-badge{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--ochre);
+  background:rgba(196,133,58,0.1);
+  border:1px solid rgba(196,133,58,0.3);
+  padding:6px 18px;
+  border-radius:20px;
+  margin-bottom:24px;
+  position:relative;
+}
+
+.hero-emoji{
+  font-size:80px;
+  margin-bottom:20px;
+  position:relative;
+  display:block;
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+.hero h1{
+  font-size:clamp(36px,7vw,72px);
+  font-weight:800;
+  color:var(--ochre);
+  letter-spacing:-1px;
+  line-height:1.1;
+  position:relative;
+  margin-bottom:8px;
+}
+
+.hero h2{
+  font-size:clamp(14px,2.5vw,22px);
+  font-weight:400;
+  color:rgba(245,237,216,0.6);
+  margin-bottom:30px;
+  position:relative;
+}
+
+.arabic-title{
+  font-family:'Noto Naskh Arabic',serif;
+  direction:rtl;
+  font-size:clamp(18px,3vw,28px);
+  color:rgba(196,133,58,0.8);
+  margin-bottom:32px;
+  position:relative;
+}
+
+.hero-desc{
+  font-size:clamp(13px,1.8vw,17px);
+  color:rgba(245,237,216,0.7);
+  max-width:600px;
+  line-height:1.8;
+  margin-bottom:40px;
+  position:relative;
+}
+
+.hero-btns{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+  position:relative;
+}
+
+.btn-primary{
+  background:var(--ochre);
+  color:var(--deep);
+  padding:14px 28px;
+  border-radius:8px;
+  font-family:'Syne',sans-serif;
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+  letter-spacing:.04em;
+  transition:all .2s;
+}
+.btn-primary:hover{background:#E09A4A;transform:translateY(-2px)}
+
+.btn-secondary{
+  background:transparent;
+  color:var(--ochre);
+  padding:14px 28px;
+  border-radius:8px;
+  border:1px solid rgba(196,133,58,0.4);
+  font-family:'Syne',sans-serif;
+  font-size:13px;
+  font-weight:600;
+  text-decoration:none;
+  letter-spacing:.04em;
+  transition:all .2s;
+}
+.btn-secondary:hover{background:rgba(196,133,58,0.1);transform:translateY(-2px)}
+
+.scroll-hint{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:11px;
+  color:rgba(245,237,216,0.3);
+  letter-spacing:.1em;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+}
+.scroll-arrow{
+  width:20px;
+  height:20px;
+  border-right:2px solid rgba(196,133,58,0.4);
+  border-bottom:2px solid rgba(196,133,58,0.4);
+  transform:rotate(45deg);
+  animation:bounce 1.5s ease-in-out infinite;
+}
+@keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(5px)}}
+
+/* ── SECTIONS ── */
+section{padding:80px 20px;max-width:1000px;margin:0 auto}
+
+.section-label{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--ochre);
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.section-label::before{content:'';flex:0 0 30px;height:1px;background:var(--ochre);opacity:.5}
+
+.section-title{
+  font-size:clamp(28px,5vw,48px);
+  font-weight:800;
+  color:var(--sand);
+  letter-spacing:-.5px;
+  margin-bottom:16px;
+  line-height:1.2;
+}
+
+.section-desc{
+  font-size:15px;
+  color:rgba(245,237,216,0.6);
+  line-height:1.8;
+  max-width:600px;
+}
+
+/* ── STORY TIMELINE ── */
+.timeline{margin-top:50px;position:relative}
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:0;bottom:0;
+  width:1px;
+  background:rgba(196,133,58,0.2);
+  transform:translateX(-50%);
+}
+
+.tl-item{
+  display:flex;
+  gap:40px;
+  align-items:flex-start;
+  margin-bottom:60px;
+  position:relative;
+}
+
+.tl-item:nth-child(even){flex-direction:row-reverse}
+
+.tl-content{
+  flex:1;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(196,133,58,0.15);
+  border-radius:14px;
+  padding:24px;
+}
+
+.tl-dot{
+  width:48px;height:48px;
+  border-radius:50%;
+  background:var(--deep);
+  border:2px solid var(--ochre);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  flex-shrink:0;
+  position:relative;
+  z-index:1;
+  margin-top:10px;
+}
+
+.tl-content h3{
+  font-size:18px;
+  font-weight:700;
+  color:var(--ochre);
+  margin-bottom:8px;
+}
+
+.tl-content p{
+  font-size:13px;
+  color:rgba(245,237,216,0.65);
+  line-height:1.7;
+}
+
+/* ── PERSONNAGES ── */
+.chars-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:16px;
+  margin-top:50px;
+}
+
+.char-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(196,133,58,0.15);
+  border-radius:14px;
+  padding:24px;
+  transition:all .2s;
+  position:relative;
+  overflow:hidden;
+}
+
+.char-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:var(--ochre);
+  opacity:0;
+  transition:opacity .2s;
+}
+
+.char-card:hover{
+  border-color:rgba(196,133,58,0.4);
+  transform:translateY(-4px);
+  background:rgba(196,133,58,0.05);
+}
+.char-card:hover::before{opacity:1}
+
+.char-avatar{
+  font-size:48px;
+  margin-bottom:14px;
+  display:block;
+}
+
+.char-name{
+  font-size:16px;
+  font-weight:700;
+  color:var(--sand);
+  margin-bottom:4px;
+}
+
+.char-role{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ochre);
+  margin-bottom:10px;
+  opacity:.7;
+}
+
+.char-desc{
+  font-size:12px;
+  color:rgba(245,237,216,0.55);
+  line-height:1.6;
+  margin-bottom:12px;
+}
+
+.char-quote{
+  font-size:11px;
+  color:var(--ochre);
+  font-style:italic;
+  border-left:2px solid rgba(196,133,58,0.4);
+  padding-left:10px;
+}
+
+/* ── LIEUX ── */
+.lieux-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;
+  margin-top:50px;
+}
+
+.lieu-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(196,133,58,0.15);
+  border-radius:14px;
+  padding:28px;
+  transition:all .2s;
+}
+
+.lieu-card:hover{
+  border-color:rgba(196,133,58,0.4);
+  transform:translateY(-4px);
+}
+
+.lieu-icon{font-size:40px;margin-bottom:14px;display:block}
+.lieu-name{font-size:18px;font-weight:700;color:var(--ochre);margin-bottom:6px}
+.lieu-desc{font-size:13px;color:rgba(245,237,216,0.6);line-height:1.6}
+
+/* ── FORMATS ── */
+.formats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:12px;
+  margin-top:40px;
+}
+
+.format-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(196,133,58,0.12);
+  border-radius:10px;
+  padding:18px;
+  text-align:center;
+}
+
+.format-icon{font-size:28px;margin-bottom:8px;display:block}
+.format-name{font-size:13px;font-weight:700;color:var(--sand);margin-bottom:4px}
+.format-desc{font-size:11px;color:rgba(245,237,216,0.5);line-height:1.5}
+
+/* ── STATS ── */
+.stats-row{
+  display:flex;
+  gap:2px;
+  margin-top:50px;
+  flex-wrap:wrap;
+}
+
+.stat{
+  flex:1;
+  min-width:120px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(196,133,58,0.12);
+  padding:28px 20px;
+  text-align:center;
+}
+.stat:first-child{border-radius:14px 0 0 14px}
+.stat:last-child{border-radius:0 14px 14px 0}
+
+.stat-val{font-size:40px;font-weight:800;color:var(--ochre);display:block}
+.stat-lbl{font-size:11px;color:rgba(245,237,216,0.5);margin-top:4px;letter-spacing:.05em}
+
+/* ── DIVIDER ── */
+.divider{
+  width:100%;
+  height:1px;
+  background:rgba(196,133,58,0.1);
+  margin:0;
+}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;
+  padding:50px 20px;
+  border-top:1px solid rgba(196,133,58,0.1);
+}
+
+footer .logo{font-size:24px;font-weight:800;color:var(--ochre);margin-bottom:8px}
+footer p{font-size:12px;color:rgba(245,237,216,0.3);line-height:1.8}
+footer .footer-links{display:flex;gap:20px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+footer a{font-size:12px;color:rgba(196,133,58,0.7);text-decoration:none}
+footer a:hover{color:var(--ochre)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .timeline::before{left:24px}
+  .tl-item,.tl-item:nth-child(even){flex-direction:row}
+  .tl-dot{width:36px;height:36px;font-size:16px}
+  .stats-row{gap:8px}
+  .stat{border-radius:10px !important}
+}
 </style>
 </head>
 <body>
-  <h1>🏔️ Darija Tafraout Bot</h1>
-  <p>Application automatique de création de contenu 
-  vidéo humoristique en Darija marocaine.</p>
-  <p>Sketches de la famille fictive Ait Brahim 
-  de Tafraout — publiés automatiquement sur TikTok.</p>
-  <div class="links">
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-badge">🇲🇦 Projet Darija · Tafraout · Anti-Atlas</div>
+  <span class="hero-emoji">🏔️</span>
+  <h1>Darija Tafraout Bot</h1>
+  <h2>Contenu humoristique automatisé en Darija marocaine</h2>
+  <div class="arabic-title">عائلة آيت إبراهيم — تفراوت × باريس × أكادير</div>
+  <p class="hero-desc">
+    Des sketches viraux de la famille fictive Ait Brahim —
+    Hassan à Paris, Brahim et Fatima à Tafraout,
+    et Lalla Zahra, la mère amazigh de 80 ans qui sait tout.
+    Publiés automatiquement sur TikTok, YouTube, Instagram et Facebook.
+  </p>
+  <div class="hero-btns">
+    <a href="#histoire" class="btn-primary">Découvrir l'histoire 🎭</a>
+    <a href="termes.html" class="btn-secondary">Conditions d'utilisation</a>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ STATS ══ -->
+<section>
+  <div class="stats-row">
+    <div class="stat"><span class="stat-val">3</span><div class="stat-lbl">Vidéos / jour</div></div>
+    <div class="stat"><span class="stat-val">~90</span><div class="stat-lbl">Vidéos / mois</div></div>
+    <div class="stat"><span class="stat-val">4</span><div class="stat-lbl">Plateformes</div></div>
+    <div class="stat"><span class="stat-val">5</span><div class="stat-lbl">Formats humour</div></div>
+    <div class="stat"><span class="stat-val">20</span><div class="stat-lbl">Sketches prévus</div></div>
+  </div>
+</section>
+
+<!-- ══ HISTOIRE ══ -->
+<section id="histoire">
+  <div class="section-label">Notre projet</div>
+  <h2 class="section-title">L'histoire de la famille Ait Brahim</h2>
+  <p class="section-desc">
+    Une famille fictive de Tafraout, village amazigh de l'Anti-Atlas marocain,
+    entre tradition et modernité. Leurs aventures quotidiennes deviennent
+    des sketches humoristiques en Darija pure, publiés automatiquement
+    chaque jour sur les réseaux sociaux.
+  </p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-content">
+        <h3>🗼 Hassan à Paris</h3>
+        <p>Hassan Ait Brahim, 45 ans, a quitté Tafraout il y a 20 ans pour Paris. Il envoie de l'argent chaque mois mais se sent de moins en moins marocain quand il revient — et de moins en moins français à Paris. Entre deux mondes, il compare tout : "En France kaynin..."</p>
+      </div>
+      <div class="tl-dot">🗼</div>
+      <div style="flex:1"></div>
+    </div>
+
+    <div class="tl-item">
+      <div style="flex:1"></div>
+      <div class="tl-dot">🏔️</div>
+      <div class="tl-content">
+        <h3>🏔️ Brahim à Tafraout</h3>
+        <p>Brahim, 33 ans, est resté à Tafraout "pour s'occuper de sa mère". En vérité, il a toujours un nouveau projet qui nécessite de l'argent de Hassan. Café, restaurant, hammam, apiculture... "Ghir dir l-flous, ana ndbi l-baqiya..."</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-content">
+        <h3>🌊 Fatima vers Agadir</h3>
+        <p>Fatima, 28 ans, la plus ambitieuse des trois. Elle a des plans concrets — un job à Agadir — mais n'ose pas en parler à sa mère. Elle utilise Hassan comme allié. "Hassan, 3ndi shi nqul lik... walakin bla mama tsmâ..."</p>
+      </div>
+      <div class="tl-dot">🏖️</div>
+      <div style="flex:1"></div>
+    </div>
+
+    <div class="tl-item">
+      <div style="flex:1"></div>
+      <div class="tl-dot">👵</div>
+      <div class="tl-content">
+        <h3>👵 Lalla Zahra — La Mère qui sait tout</h3>
+        <p>Lalla Zahra, 80 ans, Amazigh de Souss. Elle parle Tachelhit et Darija. Elle sait tout avant tout le monde. Et tombe mystérieusement "malade" exactement quand Hassan parle de repartir. "Awah ya Hassan... *tousse*..."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PERSONNAGES ══ -->
+<section id="personnages">
+  <div class="section-label">Les personnages</div>
+  <h2 class="section-title">Famille Ait Brahim</h2>
+  <p class="section-desc">4 personnages fictifs, chacun avec sa personnalité unique et ses expressions Darija signature.</p>
+
+  <div class="chars-grid">
+    <div class="char-card">
+      <span class="char-avatar">🧔</span>
+      <div class="char-name">Hassan</div>
+      <div class="char-role">45 ans · Paris 🗼</div>
+      <div class="char-desc">Grand frère, pilier financier, nostalgique. A quitté Tafraout à 25 ans. Compare tout Paris vs Tafraout.</div>
+      <div class="char-quote">"En France kaynin... walakin hnaya..."</div>
+    </div>
+
+    <div class="char-card">
+      <span class="char-avatar">👨</span>
+      <div class="char-name">Brahim</div>
+      <div class="char-role">33 ans · Tafraout 🏔️</div>
+      <div class="char-desc">Frère du milieu, rêveur inactif. Toujours un nouveau projet. Demande toujours à Hassan.</div>
+      <div class="char-quote">"Ghir dir l-flous, ana ndbi l-baqiya..."</div>
+    </div>
+
+    <div class="char-card">
+      <span class="char-avatar">👩</span>
+      <div class="char-name">Fatima</div>
+      <div class="char-role">28 ans · Tafraout → Agadir</div>
+      <div class="char-desc">Petite sœur ambitieuse. La plus intelligente. Cache ses plans de départ à sa mère.</div>
+      <div class="char-quote">"Mashi 3ibs nbghi nkhdm... normal had chi"</div>
+    </div>
+
+    <div class="char-card">
+      <span class="char-avatar">👵</span>
+      <div class="char-name">Lalla Zahra</div>
+      <div class="char-role">80 ans · Amazigh · Tafraout</div>
+      <div class="char-desc">La mère qui sait tout. Parle Tachelhit. Tombe "malade" stratégiquement. Révèle toujours la chute finale.</div>
+      <div class="char-quote">"Awah... ana 3arfa mn ijj n-usggas."</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LIEUX ══ -->
+<section id="lieux">
+  <div class="section-label">Les lieux</div>
+  <h2 class="section-title">De Tafraout à Paris</h2>
+
+  <div class="lieux-grid">
+    <div class="lieu-card">
+      <span class="lieu-icon">🏔️</span>
+      <div class="lieu-name">Tafraout</div>
+      <div class="lieu-desc">Village amazigh de l'Anti-Atlas, entre Tiznit et Tata. Maisons roses, amandiers, rochers granitiques. Tout le monde se connaît.</div>
+    </div>
+    <div class="lieu-card">
+      <span class="lieu-icon">🗼</span>
+      <div class="lieu-name">Paris de Hassan</div>
+      <div class="lieu-desc">On ne voit jamais vraiment Paris. Hassan en parle comme d'un mythe. Brahim imagine un Paris de films.</div>
+    </div>
+    <div class="lieu-card">
+      <span class="lieu-icon">🏖️</span>
+      <div class="lieu-name">Agadir Vacances</div>
+      <div class="lieu-desc">La maison de vacances familiale. Territoire neutre où tout le monde est plus détendu... sauf la mère qui ramène ses problèmes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FORMATS ══ -->
+<section>
+  <div class="section-label">Contenu</div>
+  <h2 class="section-title">5 formats de sketches</h2>
+
+  <div class="formats-grid">
+    <div class="format-card">
+      <span class="format-icon">🎭</span>
+      <div class="format-name">Sketch situationnel</div>
+      <div class="format-desc">Setup → Montée → Chute inattendue</div>
+    </div>
+    <div class="format-card">
+      <span class="format-icon">👁️</span>
+      <div class="format-name">POV Darija</div>
+      <div class="format-desc">Point de vue absurde et drôle</div>
+    </div>
+    <div class="format-card">
+      <span class="format-icon">📋</span>
+      <div class="format-name">Top 3 marocain</div>
+      <div class="format-desc">Liste avec twist humoristique</div>
+    </div>
+    <div class="format-card">
+      <span class="format-icon">💡</span>
+      <div class="format-name">Conseil + chute</div>
+      <div class="format-desc">Conseil sérieux + fin drôle</div>
+    </div>
+    <div class="format-card">
+      <span class="format-icon">📖</span>
+      <div class="format-name">Storytelling</div>
+      <div class="format-desc">Histoire courte + surprise finale</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="logo">🏔️ Darija Tafraout Bot</div>
+  <p>
+    Contenu humoristique automatisé en Darija marocaine<br>
+    Famille fictive Ait Brahim · Tafraout × Paris × Agadir<br>
+    Publié sur TikTok · YouTube · Instagram · Facebook
+  </p>
+  <div class="footer-links">
     <a href="termes.html">Conditions d'utilisation</a>
     <a href="confidentialité.html">Politique de confidentialité</a>
-    <a href="idaoutinstpage@gmail.com">Contact</a>
+    <a href="mailto:idaoutinstpage@gmail.com">Contact</a>
   </div>
+  <p style="margin-top:20px;font-size:11px;opacity:.3">
+    © 2026 Darija Tafraout Bot · Contenu fictif à but humoristique
+  </p>
+</footer>
+
 </body>
 </html>
