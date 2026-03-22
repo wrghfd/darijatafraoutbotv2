@@ -14,4 +14,4 @@ vidéo humoristique en Darija marocaine.
 - Confidentialité : https://wrghfd.github.io/darijatafraoutbotv2/confidentialité.html
 
 ## Contact
-darijatafraoutbot@gmail.com
+idaoutinstpage@gmail.com
